@@ -125,6 +125,7 @@ export function MovieProvider({ children }) {
   // Movie management for admin
   const addMovie = (newMovie) => {
     setMovies((prevMovies) => [...prevMovies, newMovie]);
+    setFiltered((prevMovies) => [...prevMovies, newMovie]);  // Update filtered list
   };
 
   const editMovie = (updatedMovie) => {
@@ -138,7 +139,7 @@ export function MovieProvider({ children }) {
   const deleteMovie = (movieId) => {
     setMovies((prevMovies) => {
       const updatedMovies = prevMovies.filter((movie) => movie.id !== movieId);
-      setFiltered(updatedMovies); // Update filtered list to exclude deleted movie
+      setFiltered(updatedMovies);  // Update filtered list to exclude deleted movie
       return updatedMovies;
     });
   };
